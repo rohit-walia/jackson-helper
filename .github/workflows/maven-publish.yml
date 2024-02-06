@@ -28,9 +28,9 @@ jobs:
           cache: maven
 
       - name: Build and package
-        run: mvn --batch-mode clean package -P FullBuild
+        run: mvn --batch-mode clean package -pl core -am -P FullBuild
 
       - name: Publish to GitHub Packages
-        run: mvn --batch-mode clean deploy -P FastBuild
+        run: mvn --batch-mode clean deploy -pl core -am -P FastBuild
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
