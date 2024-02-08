@@ -1,42 +1,55 @@
 # Jackson Helper
 
-Jackson is a popular Java library used for JSON (JavaScript Object Notation) processing. 
-Its main purpose is to provide functionalities to serialize Java objects into JSON and deserialize JSON into Java objects.
-This helper library is a wrapper around Jackson library to provide some common deserializing and serializing functionalities.
+Jackson is a popular Java library that specializes in processing JSON (JavaScript Object Notation). It offers robust
+functionalities to serialize Java objects into JSON format and deserialize JSON data into Java objects. This process is
+crucial in data exchange between a Java-based application and a web server, or for storing data in a human-readable format.
+
+This helper library, built as a wrapper around the Jackson library, aims to streamline the process of serialization and
+deserialization. It provides a set of common functionalities that simplify the conversion process, making it more efficient
+and less error-prone. The library encapsulates the complexities of using Jackson, offering a more user-friendly interface for
+developers to work with JSON data in Java.
 
 ## Installation
 
 To use this Jackson Helper library in your project, follow these steps:
 
 1. Add following repository in your `settings.xml` file
+
 ```xml
+
 <repository>
-  <id>github</id>
-  <url>https://maven.pkg.github.com/rohit-walia/jackson-helper</url>
-  <snapshots>
-    <enabled>true</enabled>
-  </snapshots>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/rohit-walia/jackson-helper</url>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
 </repository>
 ```
 
 2. Add the Maven dependency to your `pom.xml` file. Make sure to use the latest version available:
+
 ```xml
+
 <dependency>
-  <groupId>org.jacksonhelper</groupId>
-  <artifactId>jackson-helper</artifactId>
-  <version>${jackson-helper.version}</version>
+    <groupId>org.jacksonhelper</groupId>
+    <artifactId>jackson-helper</artifactId>
+    <version>${jackson-helper.version}</version>
 </dependency>
 ```
 
 3. Run mvn install
 
-## Examples
+## Usage Examples
 
-#### Deserialize JSON data into Java objects
+#### Deserializing JSON Data into Java Objects
 
-This code snippet shows how you can deserialize JSON data into Java objects. The JSON data source can be a String, file, 
-or URL. You can deserialize into POJOs, Lists, and Maps. See [here](core/src/test/java/org/jacksonhelper/deserialize) for 
-list of classes that can help you deserialize JSON data.
+This section provides a detailed guide on how to convert JSON data into Java objects. The source of the JSON data can be a 
+String, File, or URL. The library allows you to deserialize the data into various Java data structures such as POJOs 
+(Plain Old Java Objects), Lists, and Maps.
+
+The Jackson Helper library comes with a set of classes specifically designed to aid in the deserialization process. These
+classes are located in the [deserialize](core/src/main/java/org/jacksonhelper/deserialize) directory of the project. They 
+provide a simplified interface for deserialization, abstracting away the complexities of the underlying Jackson library.
 
 ```Java
 void deserializeToList() {
@@ -89,6 +102,59 @@ void deserializeToMap() {
   Map<String, ?> deserializedMapFromUrl = DeserializeToList.fromUrl(uri.toURL());
 }
 ```
+
+#### Configuring the ObjectMapper
+
+The `DefaultObjectMapper` is used by all deserialization and serialization processes. The following is the default mapper's
+configuration:
+
+The features enabled by default:
+
+- `JsonParser.Feature.ALLOW_SINGLE_QUOTES`
+- `JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES`
+- `DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE`
+
+The features disabled by default:
+
+- `SerializationFeature.WRITE_DATES_AS_TIMESTAMPS`
+- `DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES`
+
+The modules registered by default `JavaTimeModule`.
+
+Generally, this default ObjectMapper will work for most use cases and you will not need to worry about creating or
+configuring the ObjectMapper. However, if you need to customize the ObjectMapper, you can do so by using the
+`ObjectMapperBuilder` class and setting the ObjectMapper instance in the `DefaultObjectMapper` class.
+Here's an example of how to do this:
+
+```Java
+void customizeObjectMapper() {
+  // create custom ObjectMapper
+  ObjectMapper customObjectMapper = ObjectMapperBuilder.builder()
+      .featureToEnable(List.of(JsonParser.Feature.ALLOW_COMMENTS))
+      .featureToDisable(List.of(SerializationFeature.FAIL_ON_EMPTY_BEANS))
+      .moduleToRegister(List.of(new Jdk8Module()))
+      .build()
+      .toObjectMapper();
+
+  // set your custom ObjectMapper to the DefaultObjectMapper
+  DefaultObjectMapper.setObjectMapper(customObjectMapper);
+
+  // now all deserialization and serialization processes will use your custom ObjectMapper
+
+  // In the case where you want to revert to using the default ObjectMapper again, after customizing it, you can do so by
+  // simply calling the setDefault() method
+  DefaultObjectMapper.setDefault();
+}
+```
+
+Wondering what features, modules, and other configurations you can set on the ObjectMapper? Here are some links to the
+Jackson documentation that can help you with that:
+
+- [Serialization features](https://github.com/FasterXML/jackson-databind/wiki/Serialization-Features)
+- [Deserialization features](https://github.com/FasterXML/jackson-databind/wiki/Deserialization-Features)
+- [Parser features](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features)
+- [JsonGenerator features](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features)
+- [Datatype features](https://github.com/FasterXML/jackson-databind/wiki/DatatypeFeatures)
 
 # Tools, libraries, and technologies
 
