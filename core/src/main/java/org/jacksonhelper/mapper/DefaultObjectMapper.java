@@ -31,12 +31,7 @@ public class DefaultObjectMapper {
    */
   public static ObjectMapper get() {
     if (objectMapper == null) {
-      objectMapper = ObjectMapperBuilder.builder()
-          .featureToEnable(DEFAULT_FEATURES_TO_ENABLE)
-          .featureToDisable(DEFAULT_FEATURES_TO_DISABLE)
-          .moduleToRegister(DEFAULT_MODULES_TO_REGISTER)
-          .build()
-          .toObjectMapper();
+      setDefault();
     }
     return objectMapper;
   }
@@ -48,5 +43,17 @@ public class DefaultObjectMapper {
    */
   public static void set(ObjectMapper objectMapper) {
     DefaultObjectMapper.objectMapper = objectMapper;
+  }
+
+  /**
+   * Set the default ObjectMapper instance.
+   */
+  public static void setDefault() {
+    set(ObjectMapperBuilder.builder()
+        .featureToEnable(DEFAULT_FEATURES_TO_ENABLE)
+        .featureToDisable(DEFAULT_FEATURES_TO_DISABLE)
+        .moduleToRegister(DEFAULT_MODULES_TO_REGISTER)
+        .build()
+        .toObjectMapper());
   }
 }
