@@ -6,15 +6,34 @@
 
     <groupId>org.jacksonhelper</groupId>
     <artifactId>jackson-helper</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-
-    <name>jackson-helper</name>
-    <description>Helper functions for Jackson lib</description>
 
     <modules>
         <module>core</module>
     </modules>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>This helper library is a wrapper around Jackson library to provide some useful deserializing and
+        serializing functionalities.
+    </description>
+    <url>https://github.com/rohit-walia/jackson-helper</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Rohit Walia</name>
+            <email>rohitwalia91@gmail.com</email>
+            <organization>Roro</organization>
+            <organizationUrl>https://github.com/rohit-walia</organizationUrl>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>17</java.version>
@@ -38,6 +57,8 @@
 
         <!-- plugin versions -->
         <maven.surefire.version>3.0.0-M9</maven.surefire.version>
+        <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
         <logback.version>1.4.7</logback.version>
         <jackson.version>2.16.1</jackson.version>
         <lombok.version>1.18.26</lombok.version>
@@ -120,7 +141,6 @@
     </build>
 
     <profiles>
-        <!-- FullBuild - to be run in Jenkins as a complete build with all options -->
         <profile>
             <id>FullBuild</id>
             <properties>
@@ -129,29 +149,13 @@
                 <skipBuildInfo>false</skipBuildInfo>
             </properties>
         </profile>
-
-        <!-- FastBuild - to be run on local without tests or style checks -->
         <profile>
             <id>FastBuild</id>
             <properties>
-                <!-- Properties to turn on specific profiles -->
                 <skipTests>true</skipTests>
                 <skipChecks>true</skipChecks>
                 <skipBuildInfo>true</skipBuildInfo>
             </properties>
-        </profile>
-
-        <!-- RunLocal - to run local app on package -->
-        <profile>
-            <id>RunLocal</id>
-            <properties>
-                <skipTests>true</skipTests>
-                <skipChecks>true</skipChecks>
-                <skipBuildInfo>false</skipBuildInfo>
-            </properties>
-            <build>
-                <defaultGoal>package</defaultGoal>
-            </build>
         </profile>
     </profiles>
 
@@ -162,5 +166,11 @@
             <url>https://maven.pkg.github.com/rohit-walia/jackson-helper</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git://github.com/rohit-walia/jackson-helper.git</connection>
+        <developerConnection>scm:git:https://github.com/rohit-walia/jackson-helper.git</developerConnection>
+        <url>https://github.com/rohit-walia/jackson-helper/tree/main</url>
+    </scm>
 
 </project>
