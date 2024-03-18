@@ -52,4 +52,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jar artifacts
-          path: core/target/*.jar
+          path: |
+            core/target/*.jar
+            core/target/*.asc
