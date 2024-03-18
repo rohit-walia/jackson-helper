@@ -12,6 +12,7 @@ on:
 
 jobs:
   publish:
+    name: Package and Deploy
     runs-on: ubuntu-latest
 
     permissions:
@@ -26,11 +27,18 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
           cache: maven
+          settings-path: ${{ github.workspace }}/.github
 
-      - name: Build and package
-        run: mvn --batch-mode clean package -pl core -am -P FullBuild
-
-      - name: Publish to GitHub Packages
-        run: mvn --batch-mode clean deploy -pl core -am -P FastBuild
+      - name: Build, Test and Package
+        run: mvn -B package -pl core -am -P FullBuild
         env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Packages
+        run: mvn -B deploy -pl core -am -P FastBuild
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
