@@ -32,6 +32,7 @@ jobs:
           distribution: 'zulu'
           cache: maven
           settings-path: ${{ github.workspace }}/.github
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
 
       - name: Build, Test and Package
         run: mvn -B package -P FullBuild
