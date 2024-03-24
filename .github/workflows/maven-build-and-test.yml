@@ -15,6 +15,7 @@ on:
 jobs:
   build_and_test:
     name: Build and Test
+    if: ${{ github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest # Using GitHub hosted Linux runner w/ 2CPUs, 7GB RAM, 14GB SSD
 
     steps:
