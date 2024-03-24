@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.jacksonhelper</groupId>
         <artifactId>jackson-helper</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>core</artifactId>
