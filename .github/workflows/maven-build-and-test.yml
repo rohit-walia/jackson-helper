@@ -45,7 +45,7 @@ jobs:
 
   upload_artifacts:
     name: Package and Upload Artifacts
-    if: github.event.pull_request.merged
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest # Using GitHub hosted Linux runner w/ 2CPUs, 7GB RAM, 14GB SSD
 
     permissions:
