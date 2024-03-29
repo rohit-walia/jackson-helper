@@ -29,6 +29,7 @@ jobs:
           distribution: 'zulu'
           cache: maven
           settings-path: ${{ github.workspace }}/.github
+          overwrite-settings: false
 
       - name: Build and Test
         run: mvn $MVN_CLI_ARGS test -P FullBuild
@@ -63,7 +64,7 @@ jobs:
           distribution: 'zulu'
           cache: maven
           settings-path: ${{ github.workspace }}/.github
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          overwrite-settings: false
 
       - name: Package and Upload Artifacts
         run: mvn $MVN_CLI_ARGS package -P FastBuild
@@ -73,3 +74,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # for GitHub APIs
           MVN_CLI_ARGS: -s ${{ github.workspace }}/.github/settings.xml --batch-mode
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: jar artifacts
+          path: core/target/*.jar
