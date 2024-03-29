@@ -20,7 +20,7 @@
                 </repository>
                 <repository>
                     <id>github</id>
-                    <url>https://maven.pkg.github.com/rohit-walia/*</url>
+                    <url>https://maven.pkg.github.com/${env.USER_NAME}/*</url>
                 </repository>
             </repositories>
         </profile>
