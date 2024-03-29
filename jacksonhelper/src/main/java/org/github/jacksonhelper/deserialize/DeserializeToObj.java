@@ -1,8 +1,8 @@
-package org.jacksonhelper.deserialize;
+package org.github.jacksonhelper.deserialize;
 
-import static org.jacksonhelper.JacksonUtils.readValue;
+import static org.github.jacksonhelper.JacksonUtils.readValue;
 
-import org.jacksonhelper.mapper.DefaultObjectMapper;
+import org.github.jacksonhelper.mapper.DefaultObjectMapper;
 
 import java.io.File;
 import java.net.URL;

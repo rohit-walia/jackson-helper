@@ -1,8 +1,8 @@
-package org.jacksonhelper.serialize;
+package org.github.jacksonhelper.serialize;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.SneakyThrows;
-import org.jacksonhelper.mapper.DefaultObjectMapper;
+import org.github.jacksonhelper.mapper.DefaultObjectMapper;
 
 public class SerializeToStr {
 

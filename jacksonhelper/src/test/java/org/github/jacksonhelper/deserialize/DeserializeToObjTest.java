@@ -1,4 +1,4 @@
-package org.jacksonhelper.deserialize;
+package org.github.jacksonhelper.deserialize;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;

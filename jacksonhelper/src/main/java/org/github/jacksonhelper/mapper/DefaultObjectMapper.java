@@ -1,4 +1,4 @@
-package org.jacksonhelper.mapper;
+package org.github.jacksonhelper.mapper;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;

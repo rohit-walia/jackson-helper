@@ -1,10 +1,10 @@
-package org.jacksonhelper.mapper;
+package org.github.jacksonhelper.mapper;
 
 
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
-import org.jacksonhelper.JacksonUtils;
+import org.github.jacksonhelper.JacksonUtils;
 
 import java.util.List;
 
