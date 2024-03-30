@@ -32,5 +32,10 @@
             <username>${env.USER_NAME}</username>
             <password>${env.PAT_TOKEN}</password>
         </server>
+        <server>
+            <id>central</id>
+            <username>${env.MVN_CENTRAL_USER}</username>
+            <password>${env.MVN_CENTRAL_PASS}</password>
+        </server>
     </servers>
 </settings>

@@ -1,4 +1,4 @@
-package org.jacksonhelper.serialize;
+package org.github.jacksonhelper.serialize;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

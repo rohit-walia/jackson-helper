@@ -1,4 +1,4 @@
-package org.jacksonhelper;
+package org.github.jacksonhelper;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.cfg.DatatypeFeature;
 import lombok.NonNull;
 import lombok.SneakyThrows;
-import org.jacksonhelper.mapper.DefaultObjectMapper;
+import org.github.jacksonhelper.mapper.DefaultObjectMapper;
 
 import java.io.File;
 import java.io.IOException;

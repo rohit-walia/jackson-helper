@@ -13,43 +13,28 @@ developers to work with JSON data in Java.
 
 To use this Jackson Helper library in your project, follow these steps:
 
-1. Add following repository in your `settings.xml` file
+Add the Maven dependency to your `pom.xml` file. Make sure to use the latest version available:
 
 ```xml
-
-<repository>
-    <id>github</id>
-    <url>https://maven.pkg.github.com/rohit-walia/jackson-helper</url>
-    <snapshots>
-        <enabled>true</enabled>
-    </snapshots>
-</repository>
-```
-
-2. Add the Maven dependency to your `pom.xml` file. Make sure to use the latest version available:
-
-```xml
-
 <dependency>
-    <groupId>org.jacksonhelper</groupId>
+    <groupId>io.github.rohit-walia</groupId>
     <artifactId>jackson-helper</artifactId>
-    <version>${jackson-helper.version}</version>
+    <version>2.0.6</version>
 </dependency>
 ```
-
-3. Run mvn install
 
 ## Usage Examples
 
 #### Deserializing JSON Data into Java Objects
 
-This section provides a detailed guide on how to convert JSON data into Java objects. The source of the JSON data can be a 
-String, File, or URL. The library allows you to deserialize the data into various Java data structures such as POJOs 
+This section provides a detailed guide on how to convert JSON data into Java objects. The source of the JSON data can be a
+String, File, or URL. The library allows you to deserialize the data into various Java data structures such as POJOs
 (Plain Old Java Objects), Lists, and Maps.
 
 The Jackson Helper library comes with a set of classes specifically designed to aid in the deserialization process. These
-classes are located in the [deserialize](core/src/main/java/org/jacksonhelper/deserialize) directory of the project. They 
-provide a simplified interface for deserialization, abstracting away the complexities of the underlying Jackson library.
+classes are located in the [deserialize](jacksonhelper/src/main/java/org/jacksonhelper/deserialize) directory of the
+project. They provide a simplified interface for deserialization, abstracting away the complexities of the underlying Jackson
+library.
 
 ```Java
 void deserializeToList() {
