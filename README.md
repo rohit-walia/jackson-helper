@@ -11,9 +11,10 @@ developers to work with JSON data in Java.
 
 ## Installation
 
-To use this Jackson Helper library in your project, follow these steps:
-
-Add the Maven dependency to your `pom.xml` file. Make sure to use the latest version available:
+To use this Jackson Helper library in your project, add below Maven dependency to your `pom.xml` file. Make sure to use the
+latest version available. This project is deployed to both
+the [Maven Central Repository](https://central.sonatype.com/artifact/io.github.rohit-walia/jacksonhelper) and the 
+[GitHub Package Registry](https://github.com/rohit-walia?tab=packages&repo_name=jackson-helper).
 
 ```xml
 <dependency>
@@ -32,7 +33,7 @@ String, File, or URL. The library allows you to deserialize the data into variou
 (Plain Old Java Objects), Lists, and Maps.
 
 The Jackson Helper library comes with a set of classes specifically designed to aid in the deserialization process. These
-classes are located in the [deserialize](jacksonhelper/src/main/java/org/jacksonhelper/deserialize) directory of the
+classes are located in the [deserialize](jacksonhelper/src/main/java/org/github/jacksonhelper/deserialize) directory of the
 project. They provide a simplified interface for deserialization, abstracting away the complexities of the underlying Jackson
 library.
 
@@ -52,8 +53,8 @@ void deserializeToList() {
       """;
 
   // without specifying the type of the list, the return value will be generic type
-  List<Object> deserializedList = DeserializeToList.fromString(input);
-  List<Map<String, Object>> deserializedList = DeserializeToList.fromString(input);
+  List<Object> deserializedList1 = DeserializeToList.fromString(input);
+  List<Map<String, Object>> deserializedList2 = DeserializeToList.fromString(input);
 
   // you can specify the type of the list by passing the class type as the second argument
   List<YourPojo> deserializedListWithType = DeserializeToList.fromString(input, YourPojo.class);
@@ -75,8 +76,8 @@ void deserializeToMap() {
       """;
 
   // without specifying the type of the Map value
-  Map<String, Object> deserializedMap = DeserializeToMap.fromString(input);
-  Map<String, String> deserializedMap = DeserializeToMap.fromString(input);
+  Map<String, Object> deserializedMap1 = DeserializeToMap.fromString(input);
+  Map<String, String> deserializedMap2 = DeserializeToMap.fromString(input);
 
   // you can specify the type of the Map value by passing the class type as the second argument
   Map<String, YourPojo> deserializedMapWithType = DeserializeToMap.fromString(input, YourPojo.class);
@@ -104,9 +105,10 @@ The features disabled by default:
 - `SerializationFeature.WRITE_DATES_AS_TIMESTAMPS`
 - `DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES`
 
-The modules registered by default `JavaTimeModule`.
+The modules registered by default:
+- `JavaTimeModule`
 
-Generally, this default ObjectMapper will work for most use cases and you will not need to worry about creating or
+Generally, this default ObjectMapper will work for most use cases, and you will not need to worry about creating or
 configuring the ObjectMapper. However, if you need to customize the ObjectMapper, you can do so by using the
 `ObjectMapperBuilder` class and setting the ObjectMapper instance in the `DefaultObjectMapper` class.
 Here's an example of how to do this:
@@ -145,7 +147,8 @@ Jackson documentation that can help you with that:
 
 ### JUnit5
 
-This project uses JUnit5 for testing. See [here](https://junit.org/junit5/docs/current/user-guide/) for more information.
+This project uses [JUnit5](https://junit.org/junit5/docs/current/user-guide/) for testing. 
+See [here](jacksonhelper/src/test/java/org/github/jacksonhelper) for how this library is being tested.
 
 ### Lombok
 

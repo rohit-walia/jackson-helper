@@ -34,12 +34,12 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # import GPG private key
 
       - name: Deploy to GitHub Packages & Maven Central
-        run: mvn $MVN_CLI_OPTS deploy -P FullBuild
+        run: mvn $MVN_CLI_OPTS deploy
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }} # for gpg signing
           USER_NAME: ${{ secrets.USER_NAME }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # for GitHub APIs
-          MVN_CLI_OPTS: -s ${{ github.workspace }}/.github/settings.xml --batch-mode
+          MVN_CLI_OPTS: -s ${{ github.workspace }}/.github/settings.xml -B -P DeployProfile
           MVN_CENTRAL_USER: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MVN_CENTRAL_PASS: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
