@@ -38,16 +38,16 @@
         <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
         <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
         <maven-central-publishing.version>0.4.0</maven-central-publishing.version>
-        <logback.version>1.4.7</logback.version>
+        <maven-gpg.version>1.6</maven-gpg.version>
+        <logback.version>1.5.3</logback.version>
         <jackson.version>2.16.1</jackson.version>
-        <lombok.version>1.18.26</lombok.version>
-        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <lombok.version>1.18.30</lombok.version>
+        <junit-jupiter.version>5.10.1</junit-jupiter.version>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Check source style -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
@@ -135,6 +135,38 @@
                 <skipChecks>true</skipChecks>
                 <skipBuildInfo>true</skipBuildInfo>
             </properties>
+        </profile>
+        <profile>
+            <id>DeployProfile</id>
+            <properties>
+                <skipTests>false</skipTests>
+                <skipChecks>false</skipChecks>
+                <skipBuildInfo>false</skipBuildInfo>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
