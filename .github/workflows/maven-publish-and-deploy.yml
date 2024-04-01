@@ -40,6 +40,6 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # for GitHub APIs
-          MVN_CLI_OPTS: -s ${{ github.workspace }}/.github/settings.xml -B -P DeployProfile
+          MVN_CLI_OPTS: -s ${{ github.workspace }}/.github/settings.xml -B -P FullBuild
           MVN_CENTRAL_USER: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MVN_CENTRAL_PASS: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}

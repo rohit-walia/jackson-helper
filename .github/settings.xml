@@ -4,11 +4,21 @@
 
     <activeProfiles>
         <activeProfile>github</activeProfile>
+        <activeProfile>central</activeProfile>
     </activeProfiles>
 
     <profiles>
         <profile>
             <id>github</id>
+            <repositories>
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/${env.USER_NAME}/*</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>central</id>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
                 <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
@@ -17,10 +27,6 @@
                 <repository>
                     <id>central</id>
                     <url>https://repo1.maven.org/maven2</url>
-                </repository>
-                <repository>
-                    <id>github</id>
-                    <url>https://maven.pkg.github.com/${env.USER_NAME}/*</url>
                 </repository>
             </repositories>
         </profile>
