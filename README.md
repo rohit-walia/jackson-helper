@@ -4,19 +4,27 @@ Jackson is a popular Java library that specializes in processing JSON (JavaScrip
 functionalities to serialize Java objects into JSON format and deserialize JSON data into Java objects. This process is
 crucial in data exchange between a Java-based application and a web server, or for storing data in a human-readable format.
 
-This helper library, built as a wrapper around the Jackson library, aims to streamline the process of serialization and
+This lightweight library is built on top of Jackson & aims to streamline the process of serialization and
 deserialization. It provides a set of common functionalities that simplify the conversion process, making it more efficient
-and less error-prone. The library encapsulates the complexities of using Jackson, offering a more user-friendly interface for
-developers to work with JSON data in Java.
+and less error-prone. This library encapsulates the complexities of using Jackson, offering a more user-friendly
+interface for developers to work with JSON data in Java.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage Examples](#usage-examples)
+    - [Deserializing JSON Data into Java Objects](#deserializing-JSON-Data-into-Java-Objects)
+    - [Configuring the ObjectMapper](#configuring-the-ObjectMapper)
 
 ## Installation
 
 To use this Jackson Helper library in your project, add below Maven dependency to your `pom.xml` file. Make sure to use the
 latest version available. This project is deployed to both
-the [Maven Central Repository](https://central.sonatype.com/artifact/io.github.rohit-walia/jacksonhelper) and the 
+the [Maven Central Repository](https://central.sonatype.com/artifact/io.github.rohit-walia/jacksonhelper) and the
 [GitHub Package Registry](https://github.com/rohit-walia?tab=packages&repo_name=jackson-helper).
 
 ```xml
+
 <dependency>
     <groupId>io.github.rohit-walia</groupId>
     <artifactId>jackson-helper</artifactId>
@@ -106,6 +114,7 @@ The features disabled by default:
 - `DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES`
 
 The modules registered by default:
+
 - `JavaTimeModule`
 
 Generally, this default ObjectMapper will work for most use cases, and you will not need to worry about creating or
@@ -143,33 +152,17 @@ Jackson documentation that can help you with that:
 - [JsonGenerator features](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features)
 - [Datatype features](https://github.com/FasterXML/jackson-databind/wiki/DatatypeFeatures)
 
-# Tools, libraries, and technologies
+# Dependencies
 
 ### JUnit5
 
-This project uses [JUnit5](https://junit.org/junit5/docs/current/user-guide/) for testing. 
-See [here](jacksonhelper/src/test/java/org/github/jacksonhelper) for how this library is being tested.
+This project uses [JUnit5](https://junit.org/junit5/docs/current/user-guide/) for testing. Tests can be
+found [here](jacksonhelper/src/test/java/org/github/jacksonhelper).
 
 ### Lombok
 
-This project uses lombok to decrease boilerplate code. If you are using Intellij please install the Lombok Plugin. If
-you are using Eclipse STS follow the instructions [here](https://projectlombok.org/setup/eclipse).
-If you are using another IDE you can see if it is supported on the Lombok website [here](https://projectlombok.org).
+This project uses lombok to decrease boilerplate code.
 
 ### Jackson
 
 Jackson is the JSON library used in this project. See [here](https://github.com/FasterXML/jackson) for more information.
-
-### Code Quality
-
-As part of the build, there are several code quality checks running against the code base. All code quality files can be
-found in the root of the project under the [codequality](.codequality) directory.
-
-#### CheckStyle
-
-The project runs checkstyle plugin to validate java code formatting and enforce best coding standards.
-
-#### PMD
-
-The project runs PMD code analysis to find common programming flaws like unused variables, empty catch blocks, unnecessary
-object creation, etc...

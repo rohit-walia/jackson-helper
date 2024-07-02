@@ -147,10 +147,8 @@
 
     <name>${project.groupId}:${project.artifactId}</name>
     <url>https://github.com/rohit-walia/jackson-helper</url>
-    <description>This helper library, built as a wrapper around the Jackson library, aims to streamline the process of
-        serialization and deserialization. It provides a set of common functionalities that simplify the conversion process,
-        making it more efficient and less error-prone. The library encapsulates the complexities of using Jackson, offering a
-        more user-friendly interface for developers to work with JSON data in Java.
+    <description>This library provides a set of common functionalities that simplifies the serialization and deserialization
+        process.
     </description>
 
     <licenses>
